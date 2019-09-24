@@ -31,15 +31,15 @@ public class BookController {
 
 	// RESTful service to get all books
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
-	public @ResponseBody List<Book> studentListRest() {
+	public @ResponseBody List<Book> bookListRest() {
 		return (List<Book>) repository.findAll();
 	}
-	
+
 	// RESTful service to get book by id
-    @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Book> findStudentRest(@PathVariable("id") Long bookId) {	
-    	return repository.findById(bookId);
-    }   
+	@RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookId) {
+		return repository.findById(bookId);
+	}
 
 	// add a new book
 	@RequestMapping(value = "/add")

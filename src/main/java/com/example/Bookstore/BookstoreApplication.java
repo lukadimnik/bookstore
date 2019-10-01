@@ -10,6 +10,8 @@ import com.example.Bookstore.domain.BookRepository;
 import com.example.Bookstore.domain.Category;
 import com.example.Bookstore.domain.CategoryRepository;
 
+import com.example.Bookstore.domain.*;
+
 @SpringBootApplication
 public class BookstoreApplication {
 
@@ -18,7 +20,8 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository,
+			UserRepository userRepository) {
 		return (args) -> {
 
 			categoryRepository.save(new Category("Fiction"));
@@ -35,6 +38,12 @@ public class BookstoreApplication {
 			repository.save(b1);
 			repository.save(b2);
 			repository.save(b3);
+
+			// Create users: admin/admin user/user
+			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			userRepository.save(user1);
+			userRepository.save(user2);
 
 		};
 	}

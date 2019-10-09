@@ -19,10 +19,11 @@ public class WebLayerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	
+	// TEST LOGIN FORM FOR EXAMPLE
 	@Test
 	public void testDefaultMessage() throws Exception {
-		this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Hello World")));
+		this.mockMvc.perform(get("/login")).andDo(print()).andExpect(status().isOk())
+				.andExpect(content().string(containsString("Password")));
 	}
 }

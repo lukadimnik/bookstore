@@ -55,4 +55,12 @@ public class BookstoreRepositoryTest {
 		catRepository.save(category);
 		assertThat(category.getId()).isNotNull();
 	}
+	
+	@Test
+	public void deleteBook() {
+		List<Book> books = repository.findByTitle("1984");
+		repository.delete(books.get(0));
+		books = repository.findByTitle("1984");
+		assertThat(books).isEmpty();
+	}
 }

@@ -24,20 +24,23 @@ public class BookstoreApplication {
 			UserRepository userRepository) {
 		return (args) -> {
 
-			categoryRepository.save(new Category("Fiction"));
-			categoryRepository.save(new Category("History"));
+			categoryRepository.save(new Category("Science Fiction"));
+			categoryRepository.save(new Category("Romance"));
 			categoryRepository.save(new Category("Fantasy"));
 
-			Book b1 = new Book("1984", "George Orwell", "1948", "23-lsld", "15",
+			Book b1 = new Book("1984", "George Orwell", "1949", "9781234567897", "15",
+					categoryRepository.findByName("Science Fiction"));
+			Book b2 = new Book("The Lord of the Rings", "J.R.R. Tolkien", "1954", "9781295567897", "30",
 					categoryRepository.findByName("Fantasy"));
-			Book b2 = new Book("Na planini", "Joze Seliskar", "1900", "76-sdf", "20",
-					categoryRepository.findByName("History"));
-			Book b3 = new Book("Rudnik", "Lovro Kuhar", "1990", "21-hrh", "19",
-					categoryRepository.findByName("Fiction"));
+			Book b3 = new Book("Brave New World", "Aldous Huxley", "1932", "8566234567897", "19",
+					categoryRepository.findByName("Science Fiction"));
+			Book b4 = new Book("Pride and Prejudice", "Jane Austen", "1813", "8566234563318", "17",
+					categoryRepository.findByName("Romance"));
 
 			repository.save(b1);
 			repository.save(b2);
 			repository.save(b3);
+			repository.save(b4);
 
 			// Create users: admin/admin user/user
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
